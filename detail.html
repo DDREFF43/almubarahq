@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Proyek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">MHD AL RAFA MUBARAHQ</a>
+        <div class="nav-links">
+            <a href="index.html#keahlian">Keahlian</a>
+            <a href="index.html#proyek">Proyek</a>
+            <a href="index.html#kontak">Kontak</a>
+        </div>
+    </nav>
+
+    <div class="container animate-fade" style="padding-bottom: 0;">
+        <a href="index.html" class="back-link">&larr; Kembali</a>
+
+        <div class="project-header">
+            <h1 id="judul-proyek">PROYEK SI MERAH</h1>
+            <div id="badge-keahlian" class="skills-container" style="margin-bottom: 20px;">
+                </div>
+        </div>
+
+        <img id="gambar-proyek" src="https://img.okezone.com/content/2016/01/14/45/1288501/arsenal-kembali-jalin-kerja-dengan-perusahaan-indonesia-qZySEjnOmn.jpg" alt="Banner Proyek" class="project-banner">
+
+        <div class="section-alternate">
+            <div class="project-body"">
+                <h2>Latar Belakang Proyek</h2>
+                <p id="teks-latar">Memuat data...</p>
+
+                <h2>Tantangan & Solusi</h2>
+                <p id="teks-tantangan">Memuat data...</p>
+
+                <h2>Apa yang Saya Pelajari?</h2>
+                <p id="teks-pelajaran">Memuat data...</p>
+
+                <div style="text-align: center; margin-top: 50px;">
+                    <a id="demo" href="#" target="_blank" class="btn">Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="border-top: none; padding-top: 30px;">
+        <p>&copy; 2026 MHD AL RAFA MUBARAHQ</p>
+    </footer>
+
+    <script src="data.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const proyekId = urlParams.get('id');
+
+        if (proyekId && databaseProyek[proyekId]) {
+            const data = databaseProyek[proyekId]; 
+
+            document.getElementById('judul-proyek').innerText = data.judul;
+            document.getElementById('gambar-proyek').src = data.gambar;
+            document.getElementById('teks-latar').innerText = data.latar;
+            document.getElementById('teks-tantangan').innerText = data.tantangan;
+            document.getElementById('teks-pelajaran').innerText = data.pelajaran;
+            document.getElementById('demo').href = data.link;
+
+            let badgeHTML = "";
+            data.keahlian.forEach(function(skill) {
+                badgeHTML += `<span class="skill-badge">${skill}</span>`;
+            });
+            document.getElementById('badge-keahlian').innerHTML = badgeHTML;
+            
+            document.title = "Detail - " + data.judul;
+        } else {
+            document.getElementById('judul-proyek').innerText = "Proyek Tidak Ditemukan";
+            document.getElementById('teks-latar').innerText = "Maaf, data proyek yang Anda cari tidak ada.";
+        }
+    </script>
+</body>
+</html>

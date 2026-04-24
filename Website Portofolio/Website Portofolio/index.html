@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Mhd al rafa mubarahq</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">MHD AL RAFA MUBARAHQ</a>
+        <div class="nav-links">
+            <a href="#keahlian">Keahlian</a>
+            <a href="#proyek">Proyek</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </nav>
+
+    <div class="container animate-fade">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Halo <br><span>ARSENAL RED</span></h1>
+                <p>Siswa Rekayasa Perangkat Lunak di SMK Multi Karya Medan. Berfokus pada pengembangan aplikasi yang fungsional dan antarmuka yang bersih.</p>
+                <a href="#kontak" class="btn">Mari Berdiskusi</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://yt3.googleusercontent.com/oTgIEEJnrkLTpezJ3gfr0tTSpZiO2FbBhGQ5sEwRVW16Wd1aGhCG0xVZSzUmNorEjv1o0WRJ=s900-c-k-c0x00ffffff-no-rj" alt="Foto Profil">
+            </div>
+        </section>
+
+        <h2 id="keahlian" class="section-title">Keahlian Teknis</h2>
+        <div class="skills-container">
+            <span class="skill-badge"><i class="devicon-html5-plain" style="color: #000000; margin-right: 5px;"></i> HTML5</span>
+            <span class="skill-badge"><i class="devicon-css3-plain" style="color: #ff000d; margin-right: 5px;"></i> CSS3</span>
+            <span class="skill-badge"><i class="devicon-javascript-plain" style="color: #f7df1e; margin-right: 5px;"></i> JavaScript Dasar</span>
+            <span class="skill-badge"><i class="devicon-github-original" style="margin-right: 5px;"></i> Git & GitHub</span>
+            <span class="skill-badge"><i class="devicon-figma-plain" style="color: #F24E1E; margin-right: 5px;"></i> UI/UX Design</span>
+        </div>
+
+        <div class="section-alternate">
+            <h2 id="proyek" class="section-title" style="margin-top: 0;">XCLUB MERAH</h2>
+            
+            <div class="portfolio-grid" id="daftar-proyek">
+                </div>
+        </div>
+
+        <h2 id="kontak" class="section-title">Hubungi Saya</h2>
+        <div class="contact-links">
+            <a href="mailto:email.rorbey940@gmail.com">Email</a>
+            <a href="https://tiktok.com/in/IGN_San" target="_blank">tik-tok</a>
+            <a href="https://instagram.com/san_ihs7" target="_blank">instagram</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MHD AL RAFA MUBARAHQ</p>
+    </footer>
+
+    <script src="data.js"></script>
+
+    <script>
+        const bagianProyek = document.getElementById('daftar-proyek');
+        let htmlCard = '';
+
+        for (const [id, data] of Object.entries(databaseProyek)) {
+            
+            let deskripsiSingkat = data.latar.substring(0, 90) + "...";
+
+            htmlCard += `
+                <div class="card">
+                    <img src="${data.gambar}" alt="${data.judul}">
+                    <div class="card-content">
+                        <h3>${data.judul}</h3>
+                        <p>${deskripsiSingkat}</p>
+                        <a href="detail.html?id=${id}" class="btn btn-outline" style="text-align: center; display: block; margin-top: 15px;">Lihat Detail</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        bagianProyek.innerHTML = htmlCard;
+    </script>
+
+</body>
+</html>
